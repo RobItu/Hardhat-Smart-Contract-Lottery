@@ -2,8 +2,8 @@ const { ethers, network } = require("hardhat")
 const fs = require("fs")
 
 const FRONT_END_ADDRESSES_FILE =
-    "/home/robitu/personal/nextjs-ethers/constants/contractAddresses.json"
-const FRONT_END_ABI_FILE = "/home/robitu/personal/nextjs-ethers/constants/abi.json"
+    "/home/rpigsd/hh-fcc/NextJS_Smart_Lottery/constants/contractAddresses.json"
+const FRONT_END_ABI_FILE = "/home/rpigsd/hh-fcc/NextJS_Smart_Lottery/constants/abi.json"
 
 module.exports = async function () {
     if (process.env.UPDATE_FRONT_END) {
@@ -23,7 +23,7 @@ async function updateContractAddresses() {
     const currentAddresses = JSON.parse(fs.readFileSync(FRONT_END_ADDRESSES_FILE, "utf8"))
     const chainId = network.config.chainId.toString()
     if (chainId in currentAddresses) {
-        if (!currentAddress[chainId].includes(raffle.address)) {
+        if (!currentAddresses[chainId].includes(raffle.address)) {
             currentAddresses[chainId].push(raffle.address)
         }
     }
